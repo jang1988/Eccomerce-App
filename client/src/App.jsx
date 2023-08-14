@@ -11,6 +11,7 @@ const App = () => {
     const isAuth = false;
     return (
         <Routes>
+            <Route path="*" element={<Home />} />
             <Route path="/" element={<Home />} />
             <Route path="/product/:id" element={<Product />} />
             <Route path="/products/:category" element={<ProductList />} />
