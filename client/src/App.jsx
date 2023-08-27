@@ -7,12 +7,16 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import Cart from './pages/Cart';
 
+import './App.css'
+import Success from './pages/Success';
+
 const App = () => {
     const isAuth = false;
     return (
         <Routes>
             <Route path="*" element={<Home />} />
             <Route path="/" element={<Home />} />
+            <Route path="/success" element={<Success />} />
             <Route path="/product/:id" element={<Product />} />
             <Route path="/products/:category" element={<ProductList />} />
             <Route path="/register" element={isAuth ? <Home /> : <Register />} />
