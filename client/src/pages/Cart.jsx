@@ -164,6 +164,7 @@ const Button = styled.button`
 const Cart = () => {
     const cart = useSelector((state) => state.cart);
     const [stripeToken, setStripeToken] = React.useState(null);
+    console.log('stripeToken: ', stripeToken)
     const navigate = useNavigate();
 
     const onToken = (token) => {
