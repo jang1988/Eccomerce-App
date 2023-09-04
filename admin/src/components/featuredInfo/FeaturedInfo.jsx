@@ -7,6 +7,8 @@ export default function FeaturedInfo() {
   const [income, setIncome] = useState([]);
   const [perc, setPerc] = useState(0);
 
+  income.sort((a, b) => a._id - b._id);
+
   useEffect(() => {
     const getIncome = async () => {
       try {
@@ -21,7 +23,7 @@ export default function FeaturedInfo() {
   return (
     <div className="featured">
       <div className="featuredItem">
-        <span className="featuredTitle">Revanue</span>
+        <span className="featuredTitle">Разница в "%"</span>
         <div className="featuredMoneyContainer">
           <span className="featuredMoney">${income[1]?.total}</span>
           <span className="featuredMoneyRate">
@@ -33,27 +35,33 @@ export default function FeaturedInfo() {
             )}
           </span>
         </div>
-        <span className="featuredSub">Compared to last month</span>
+        <span className="featuredSub">С прошлым месяцом</span>
       </div>
       <div className="featuredItem">
-        <span className="featuredTitle">Sales</span>
+        <span className="featuredTitle">Разница в "$"</span>
         <div className="featuredMoneyContainer">
-          <span className="featuredMoney">$4,415</span>
-          <span className="featuredMoneyRate">
-            -1.4 <ArrowDownward className="featuredIcon negative" />
+          <span className="featuredMoney">${income[1]?.total}</span>
+          <span className="featuredMoneyRate">{income[0]?.total}{income[1]?.total - income[0]?.total ? (
+              <ArrowDownward className="featuredIcon negative" />
+            ) : (
+              <ArrowUpward className="featuredIcon" />
+            )}
           </span>
         </div>
-        <span className="featuredSub">Compared to last month</span>
+        <span className="featuredSub">С прошлым месяцом</span>
       </div>
       <div className="featuredItem">
-        <span className="featuredTitle">Cost</span>
+        <span className="featuredTitle">Всего</span>
         <div className="featuredMoneyContainer">
-          <span className="featuredMoney">$2,225</span>
-          <span className="featuredMoneyRate">
-            +2.4 <ArrowUpward className="featuredIcon" />
+          <span className="featuredMoney">${income[0]?.total + income[1]?.total}</span>
+          <span className="featuredMoneyRate">{income[0]?.total}{income[0]?.total ? (
+             <ArrowUpward className="featuredIcon" />
+            ) : (
+             <ArrowDownward className="featuredIcon negative" />
+            )}
           </span>
         </div>
-        <span className="featuredSub">Compared to last month</span>
+        <span className="featuredSub">Весь период</span>
       </div>
     </div>
   );

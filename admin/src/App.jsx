@@ -16,7 +16,6 @@ import Login from './pages/login/Login';
 
 function App() {
     const admin = useSelector((state) => state.user.currentUser?.isAdmin);
-    console.log('admin: ', admin)
 
     return (
         <>
@@ -24,11 +23,11 @@ function App() {
             <div className="container">
                 {admin && <Sidebar />}
                 <Routes>
-                    <Route path="/" element={admin ? <Home /> : <Login />} />
+                    <Route path="*" element={admin ? <Home /> : <Login />} />
                     <Route path="/login" element={admin ? <Home /> : <Login />} />
                     {admin && (
                         <>
-                            <Route key="home" path="/" element={<Home />} />
+                            <Route key="home" path="/home" element={<Home />} />
                             <Route key="userList" path="/users" element={<UserList />} />
                             <Route key="user" path="/user/:userId" element={<User />} />
                             <Route key="newUser" path="/newUser" element={<NewUser />} />

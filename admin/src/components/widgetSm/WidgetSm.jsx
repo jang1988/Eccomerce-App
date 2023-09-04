@@ -5,7 +5,6 @@ import { userRequest } from "../../requestMethods";
 
 export default function WidgetSm() {
   const [users, setUsers] = useState([]);
-  console.log('%c users: ', 'font-size:12px;background-color: #E41A6A;color:#fff;', users)
 
   useEffect(() => {
     const getUsers = async () => {
